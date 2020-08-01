@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :users
-  resources :users, only: [:index, :show]
+  root 'users#top'
 
-  root 'books#top'
+  devise_for :users, {
+  	sessions: 'users/sessions',
+  	registrations: 'users/registrations'
+  }
 
-  resources :books
+
+
+  resources :users, only: [:index, :show, :edit, :create, :update]
+  resources :books, only: [:index, :show, :edit, :create, :update, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
