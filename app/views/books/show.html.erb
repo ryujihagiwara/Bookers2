@@ -2,9 +2,16 @@
  <div class="row">
 
   <div class="col-lg-4">
+
+  <% if flash[:notice] %>
+    <div class="flash">
+      <%= flash[:notice] %>
+    </div>
+    <% end %>
+
   <h1>New book</h1>
 
-  <!-- <%= form_for(@book) do |f| %>
+  <%= form_for(@book) do |f| %>
 
   <h3>Title</h3>
   <%= f.text_field :title %>
@@ -13,7 +20,7 @@
   <%= f.text_area :body %><br>
   <%= f.submit 'Create Book' %>
 
-  <% end %> -->
+  <% end %>
   </div>
 
 
@@ -36,7 +43,7 @@
 		  	<td><%= @book.body %></td>
 		  	<td>
 		  	  <%= link_to 'Edit', edit_book_path(@book) %>
-		  	  <%= link_to 'destroy', destroy_book_path(@book) %>
+		  	  <%= link_to 'destroy', book_path(@book), method: :delete, data: { confirm: "本当に消しますか？"} %>
 		  	</td>
 		  </tr>
 	</tbody>
