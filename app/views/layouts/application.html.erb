@@ -10,7 +10,10 @@
   </head>
 
   <header>
-
+    <%= link_to 'Home', user_path(current_user.id) %>
+    <%= link_to 'Users', user_path(current_user.id) %>
+    <%= link_to 'Books', books_path(@book) %>
+    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
   </header>
 
   <body>
