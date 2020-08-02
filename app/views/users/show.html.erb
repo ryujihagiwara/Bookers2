@@ -1,1 +1,5 @@
-<h1>マイページ</h1>
+<h1>User info</h1>
+<div class="profile-container">
+  <h3 class="profile-name"><%= @user.name %></h3>
+  <%= image_tag('sample-author2.jpg', class: "img-square pull-left profile-thumb", style: "width: 100px; height: 100px;") %>
+</div>
