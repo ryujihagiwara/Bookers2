@@ -11,6 +11,8 @@ class User < ApplicationRecord
 
   has_many :books, dependent: :destroy
 
+  attachment :profile_image
+
   def email_required?
   	false
   end
