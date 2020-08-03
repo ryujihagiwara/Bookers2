@@ -26,13 +26,13 @@
       </tr>
       <tr>
         <td>introduction</td>
-        <td><%= @user.introduction %></td>
+        <td><%= @book.user.introduction %></td>
       <tr>
   </tbody>
 </table>
 
- <% if @user.id == current_user.id %>
-  <%= link_to edit_user_path(@user), class: "btn btn-default btn-block" do %>
+ <% if @book.user.id == current_user.id %>
+  <%= link_to edit_user_path(@user.id), class: "btn btn-default btn-block" do %>
    <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
   <% end%>
   <% end %>
