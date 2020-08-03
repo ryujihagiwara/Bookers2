@@ -2,6 +2,43 @@
  <div class="row">
 
   <div class="col-lg-4">
+
+<% if flash[:notice] %>
+    <div class="flash">
+      <%= flash[:notice] %>
+    </div>
+    <% end %>
+
+<h1>User info</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= image_tag('no_image.jpg', class: "img-square pull-left profile-thumb", style: "width: 100px; height: 100px;") %>
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td>name</td>
+        <td><%= @book.user.name %></td>
+      </tr>
+      <tr>
+        <td>introduction</td>
+        <td><%= @user.introduction %></td>
+      <tr>
+  </tbody>
+</table>
+
+ <% if @user.id == current_user.id %>
+  <%= link_to edit_user_path(@user), class: "btn btn-default btn-block" do %>
+   <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+  <% end%>
+  <% end %>
+</div>
+
+
   <h1>New book</h1>
 
   <% if @book.errors.any? %>
@@ -42,7 +79,10 @@
 		 <% @books.each do |book| %>
 		  <tr>
 		  	<td></td>
-		  	<td><%= book.title %></td>
+		  	<td><%= link_to book_path(book) do %>
+              <%= book.title %>
+            <% end%>
+        </td>
 		  	<td><%= book.body %></td>
 		  </tr>
 		 <% end %>
