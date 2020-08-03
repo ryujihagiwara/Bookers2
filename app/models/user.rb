@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :name, length: { in: 2..20 }
   validates :email, presence: true
+  validates :introduction, length: { maximum:50 }
 
 
   has_many :books, dependent: :destroy
