@@ -16,7 +16,8 @@
   <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= image_tag('no_image.jpg', class: "img-square pull-left profile-thumb", style: "width: 100px; height: 100px;") %>
+      <th>
+        <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-square pull-left profile-img", fallback: "no_image.jpg" %>
       </th>
       <th></th>
     </tr>
