@@ -7,7 +7,7 @@
 <h1>User info</h1>
 
 <div class="row">
-  <div class="col-lg-2">
+  <div class="col-md-2">
 <table class="table table-striped">
   <thead>
     <tr>
@@ -33,6 +33,31 @@
    <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
   <% end%>
   <% end %>
+
+<h1>New book</h1>
+
+  <% if @book.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <%= form_for(@book) do |f| %>
+
+  <h3>Title</h3>
+  <%= f.text_field :title %>
+
+  <h3>Opinion</h3>
+  <%= f.text_area :body %><br>
+  <%= f.submit 'Create Book' %>
+
+  <% end %>
+  </div>
+
 </div>
 </div>
 
