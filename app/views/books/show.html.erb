@@ -1,13 +1,47 @@
 <div class="container">
  <div class="row">
 
-  <div class="col-lg-4">
+  <div class="col-md-3">
 
   <% if flash[:notice] %>
     <div class="flash">
       <%= flash[:notice] %>
     </div>
     <% end %>
+
+    <h1>User info</h1>
+
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= image_tag('no_image.jpg', class: "img-square pull-left profile-thumb", style: "width: 100px; height: 100px;") %>
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td>name</td>
+        <td><%= @user.name%></td>
+      </tr>
+      <tr>
+        <td>introduction</td>
+        <td><%= @user.introduction %></td>
+      </tr>
+  </tbody>
+  </table>
+
+
+  <% if @user == current_user %>
+  <%= link_to edit_user_path(@user.id), class: "btn btn-default btn-block" do %>
+   <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+   <% else %>
+   <%= link_to user_path(current_user), class: "btn btn-default btn-block" do %>
+   <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+     <% end %>
+     <% end %>
+  <% end%>
+
 
   <h1>New book</h1>
 
@@ -24,7 +58,7 @@
   </div>
 
 
-  <div class="col-lg-8">
+  <div class="col-md-9">
   <h1>Book detail</h1>
 
   <table class="table table-striped">
@@ -42,8 +76,10 @@
 		  	<td><%= @book.title %></td>
 		  	<td><%= @book.body %></td>
 		  	<td>
+          <% if @user == current_user %>
 		  	  <%= link_to 'Edit', edit_book_path(@book) %>
 		  	  <%= link_to 'destroy', book_path(@book), method: :delete, data: { confirm: "本当に消しますか？"} %>
+          <% end %>
 		  	</td>
 		  </tr>
 	</tbody>

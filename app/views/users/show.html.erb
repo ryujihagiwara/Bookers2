@@ -1,3 +1,9 @@
+<div class="container">
+ <div class="row">
+
+
+<div class="col-md-3">
+
 <% if flash[:notice] %>
     <div class="flash">
       <%= flash[:notice] %>
@@ -7,7 +13,7 @@
 <h1>User info</h1>
 
 <div class="row">
-  <div class="col-md-2">
+  <div class="col-md-3">
 <table class="table table-striped">
   <thead>
     <tr>
@@ -57,6 +63,34 @@
 
   <% end %>
   </div>
+
+  <h1>Books</h1>
+<div class="col-md-9">
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+    </tr>
+  </thead>
+  <tbody>
+     <% @books.each do |book| %>
+      <tr>
+        <td>
+            <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-square pull-left profile-img", fallback: "no_image.jpg", size: '60x60' %>
+        </td>
+        <td><%= link_to book_path(book) do %>
+              <%= book.title %>
+            <% end%>
+        </td>
+        <td><%= book.body %></td>
+      </tr>
+     <% end %>
+  </tbody>
+  </table>
+</div>
+
 
 </div>
 </div>
