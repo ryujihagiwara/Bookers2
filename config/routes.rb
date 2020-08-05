@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   get 'home/about'
-  root 'users#top'
+  root to: 'users#top'
 
   devise_for :users, {
   	sessions: 'users/sessions',
-  	registrations: 'users/registrations'
+    registrations: 'users/registrations'
   }
 
 
